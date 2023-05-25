@@ -6,16 +6,24 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Relative line numbers
-vim.opt.nu = true
-vim.opt.rnu = true
+vim.opt.nu = true -- line numbers
+vim.opt.rnu = true -- relative line numbers
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.opt.expandtab = true -- tabs to spaces
 
 vim.opt.smartindent = true
+
+-- force all horizontal splits to go below current window
+vim.opt.splitbelow = true
+
+-- force all vertical splits to go to the right of current window
+vim.opt.splitright = true
+
+vim.opt.showtabline = 0 -- always show tabs
+vim.opt.cmdheight = 1 -- more space for displaying messages
 
 vim.opt.wrap = false
 
@@ -27,9 +35,6 @@ vim.opt.colorcolumn = '100'
 
 -- Scroll offset
 vim.opt.scrolloff = 8
-
--- Set highlight on search
-vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
@@ -66,15 +71,16 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+-- if a file is being edited by another program
+-- (or was written to file while editing with another program), it is not allowed to be edited
+vim.opt.writebackup = false
+vim.opt.backup = false -- do not creates a backup file
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
--- vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
--- vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Save file
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', function()
@@ -104,19 +110,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
 -- [[ Autoformat ]]
-vim.api.nvim_create_autocmd('BufWritePost', {
-  pattern = { '*.ts', '*.js' },
-  command = 'silent! EslintFixAll',
-  group = vim.api.nvim_create_augroup('AutoformatESLint', {}),
-})
-vim.api.nvim_create_autocmd('BufWritePost', {
-  pattern = { '*.lua' },
-  command = 'silent! !stylua %',
-  group = vim.api.nvim_create_augroup('AutoformatLua', {}),
-})
-vim.api.nvim_create_autocmd('BufWritePost', {
-  pattern = { '*.php' },
-  command = 'silent! !php-cs-fixer fix %',
-  group = vim.api.nvim_create_augroup('AutoformatPhp', {}),
-})
+-- vim.api.nvim_create_autocmd('BufWritePost', {
+--   pattern = { '*.ts', '*.js' },
+--   command = 'silent! EslintFixAll',
+--   group = vim.api.nvim_create_augroup('AutoformatESLint', {}),
+-- })
+-- vim.api.nvim_create_autocmd('BufWritePost', {
+--   pattern = { '*.lua' },
+--   command = 'silent! !stylua %',
+--   group = vim.api.nvim_create_augroup('AutoformatLua', {}),
+-- })
+-- vim.api.nvim_create_autocmd('BufWritePost', {
+--   pattern = { '*.php' },
+--   command = 'silent! !php-cs-fixer fix %',
+--   group = vim.api.nvim_create_augroup('AutoformatPhp', {}),
+-- })
