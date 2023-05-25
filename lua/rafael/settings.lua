@@ -23,7 +23,7 @@ vim.opt.wrap = false
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
-vim.opt.colorcolumn = "100"
+vim.opt.colorcolumn = '100'
 
 -- Scroll offset
 vim.opt.scrolloff = 8
@@ -77,22 +77,21 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Save file
-vim.keymap.set({ "n", "i", "v" }, "<C-s>", function()
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', function()
   vim.cmd.stopinsert()
   vim.cmd.write()
 end)
 
 -- Move lines
-vim.keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv")
-vim.keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', '<A-Up>', ":m '<-2<CR>gv=gv")
+vim.keymap.set('v', '<A-Down>', ":m '>+1<CR>gv=gv")
 
 -- Backspace to alternate last buffer
-vim.keymap.set("n", "<BS>", "<C-6>")
+vim.keymap.set('n', '<BS>', '<C-6>')
 
 -- Home key to first non-blank character
-vim.keymap.set({ "n", "v" }, "<Home>", "^")
-vim.keymap.set("i", "<Home>", "<C-o>^")
-
+vim.keymap.set({ 'n', 'v' }, '<Home>', '^')
+vim.keymap.set('i', '<Home>', '<C-o>^')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -103,4 +102,21 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
   group = highlight_group,
   pattern = '*',
+})
+
+-- [[ Autoformat ]]
+vim.api.nvim_create_autocmd('BufWritePost', {
+  pattern = { '*.ts', '*.js' },
+  command = 'silent! EslintFixAll',
+  group = vim.api.nvim_create_augroup('AutoformatESLint', {}),
+})
+vim.api.nvim_create_autocmd('BufWritePost', {
+  pattern = { '*.lua' },
+  command = 'silent! !stylua %',
+  group = vim.api.nvim_create_augroup('AutoformatLua', {}),
+})
+vim.api.nvim_create_autocmd('BufWritePost', {
+  pattern = { '*.php' },
+  command = 'silent! !php-cs-fixer fix %',
+  group = vim.api.nvim_create_augroup('AutoformatPhp', {}),
 })

@@ -4,8 +4,8 @@ return {
     requires = 'nvim-tree/nvim-web-devicons',
     config = {
       options = {
-        separator_style = 'slope'
-      }
-    }
-  }
+        separator_style = 'slope',
+      },
+    },
+  },
 }
