@@ -6,7 +6,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.opt.nu = true -- line numbers
+vim.opt.nu = true  -- line numbers
 vim.opt.rnu = true -- relative line numbers
 
 vim.opt.tabstop = 4
@@ -23,7 +23,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 vim.opt.showtabline = 0 -- always show tabs
-vim.opt.cmdheight = 1 -- more space for displaying messages
+vim.opt.cmdheight = 1   -- more space for displaying messages
 
 vim.opt.wrap = false
 
@@ -84,8 +84,8 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Save file
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', function()
-  vim.cmd.stopinsert()
-  vim.cmd.write()
+    vim.cmd.stopinsert()
+    vim.cmd.write()
 end)
 
 -- Move lines
@@ -103,11 +103,11 @@ vim.keymap.set('i', '<Home>', '<C-o>^')
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = '*',
 })
 
 -- Diagnostic keymaps
@@ -116,19 +116,7 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
--- [[ Autoformat ]]
--- vim.api.nvim_create_autocmd('BufWritePost', {
---   pattern = { '*.ts', '*.js' },
---   command = 'silent! EslintFixAll',
---   group = vim.api.nvim_create_augroup('AutoformatESLint', {}),
--- })
--- vim.api.nvim_create_autocmd('BufWritePost', {
---   pattern = { '*.lua' },
---   command = 'silent! !stylua %',
---   group = vim.api.nvim_create_augroup('AutoformatLua', {}),
--- })
--- vim.api.nvim_create_autocmd('BufWritePost', {
---   pattern = { '*.php' },
---   command = 'silent! !php-cs-fixer fix %',
---   group = vim.api.nvim_create_augroup('AutoformatPhp', {}),
--- })
+-- Buffers keymaps
+vim.keymap.set('n', '<leader>bd', vim.cmd.bd, { desc = 'Delete buffer' })
+vim.keymap.set('n', '<leader>bn', vim.cmd.bnext, { desc = 'Next buffer' })
+vim.keymap.set('n', '<leader>bp', vim.cmd.bprev, { desc = 'Previous buffer' })

@@ -9,13 +9,12 @@ return {
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       -- 'folke/neodev.nvim',
     },
     config = function()
-      print('oi')
       --  This function gets run when an LSP connects to a particular buffer.
       local on_attach = function(_, bufnr)
         local nmap = function(keys, func, desc)
@@ -36,12 +35,7 @@ return {
         nmap('gr', builtin.lsp_references, '[G]oto [R]eferences')
         nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
         nmap('go', vim.lsp.buf.type_definition, '[G]oto Type Definition')
-        vim.keymap.set(
-          { 'n', 'i' },
-          '<C-h>',
-          vim.lsp.buf.signature_helper,
-          { buffer = bufnr, desc = 'Signature [H]elper' }
-        )
+        vim.keymap.set({ 'n', 'i' }, '<C-h>', vim.lsp.buf.signature_help, { buffer = bufnr, desc = 'Signature [H]elp' })
       end
 
       local servers = {
