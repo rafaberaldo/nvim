@@ -1,9 +1,7 @@
 return {
   {
-    -- Add indentation guides even on blank lines
+    -- Indent lines
     'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help indent_blankline.txt`
     opts = {
       show_trailing_blankline_indent = false,
     },
