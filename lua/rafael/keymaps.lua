@@ -12,10 +12,16 @@
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Save file
-vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', function()
+vim.keymap.set({ 'n', 'i', 'v', 'x' }, '<C-s>', function()
   vim.cmd.stopinsert()
   vim.cmd.write()
 end)
+
+-- Delete only (no cut)
+vim.keymap.set({ 'n', 'v', 'x' }, 'd', '"_d')
+
+-- New line below without leaving normal mode
+vim.keymap.set('n', '<leader>o', 'o<Esc>')
 
 -- Move lines
 vim.keymap.set('v', '<A-Up>', ":m '<-2<CR>gv=gv")
@@ -25,7 +31,7 @@ vim.keymap.set('v', '<A-Down>', ":m '>+1<CR>gv=gv")
 vim.keymap.set('n', '<BS>', '<C-6>')
 
 -- Home key to first non-blank character
-vim.keymap.set({ 'n', 'v' }, '<Home>', '^')
+vim.keymap.set({ 'n', 'v', 'x' }, '<Home>', '^')
 vim.keymap.set('i', '<Home>', '<C-o>^')
 
 -- Highlight on yank
