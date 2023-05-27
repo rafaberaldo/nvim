@@ -6,6 +6,7 @@ vim.g.maplocalleader = ' '
 
 vim.opt.nu = true -- line numbers
 vim.opt.rnu = true -- relative line numbers
+vim.opt.cursorline = true -- highlight current line
 
 vim.opt.tabstop = 4 -- number of spaces of the tab character
 vim.opt.softtabstop = 4 -- number of spaces a <Tab> jumps while editing
@@ -38,6 +39,4 @@ vim.opt.backup = false -- do not creates a backup file
 
 vim.wo.signcolumn = 'yes' -- always show sign column
 
---
-
-vim.opt.completeopt = 'menuone,noselect' -- better completion experience
+vim.opt.completeopt = 'menuone,noselect' -- completion options
