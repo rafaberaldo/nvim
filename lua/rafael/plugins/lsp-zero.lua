@@ -1,5 +1,6 @@
 return {
   {
+    -- Language Server Protocol
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
     dependencies = {

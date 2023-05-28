@@ -1,5 +1,4 @@
 -- [[ Setting options ]]
--- See `:help vim.o`
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '

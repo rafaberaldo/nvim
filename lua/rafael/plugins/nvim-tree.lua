@@ -1,11 +1,15 @@
 return {
   {
+    -- Better file explorer
     'nvim-tree/nvim-tree.lua',
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
-      -- disable netrw
+      -- Disable netrw
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
+
+      -- Open links in browser
+      vim.keymap.set('n', 'gx', [[:execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]])
 
       vim.keymap.set('n', '<leader>f', vim.cmd.NvimTreeFocus)
 

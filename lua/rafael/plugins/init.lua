@@ -1,7 +1,7 @@
+-- [[ Plugins without setup goes here ]]
 return {
-  -- Git related plugins
+  -- Git commands as vim commands
   'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',

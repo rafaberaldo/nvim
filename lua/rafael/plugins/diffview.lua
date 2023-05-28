@@ -1,5 +1,6 @@
 return {
   {
+    -- Git diff view similar to VSCode
     'sindrets/diffview.nvim',
     dependencies = 'nvim-web-devicons',
     config = function()

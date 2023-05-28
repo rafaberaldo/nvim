@@ -1,5 +1,4 @@
 -- [[ Basic Keymaps ]]
--- See `:help vim.keymap.set()`
 
 -- Modes cheatsheet:
 --   normal_mode = "n",
@@ -18,7 +17,10 @@ vim.keymap.set({ 'n', 'i', 'v', 'x' }, '<C-s>', function()
 end)
 
 -- Delete only (no cut)
-vim.keymap.set({ 'n', 'v', 'x' }, 'd', '"_d')
+vim.keymap.set({ 'n', 'v', 'x' }, '<leader>d', '"_d')
+
+-- Paste without overwriting clipboard
+vim.keymap.set({ 'v', 'x' }, 'p', '"_dP')
 
 -- New line below without leaving normal mode
 vim.keymap.set('n', '<leader>o', 'o<Esc>')
@@ -26,6 +28,8 @@ vim.keymap.set('n', '<leader>o', 'o<Esc>')
 -- Move lines
 vim.keymap.set('v', '<A-Up>', ":m '<-2<CR>gv=gv")
 vim.keymap.set('v', '<A-Down>', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', '<A-i>', ":m '<-2<CR>gv=gv")
+vim.keymap.set('v', '<A-k>', ":m '>+1<CR>gv=gv")
 
 -- Backspace to alternate last buffer
 vim.keymap.set('n', '<BS>', '<C-6>')
@@ -33,6 +37,12 @@ vim.keymap.set('n', '<BS>', '<C-6>')
 -- Home key to first non-blank character
 vim.keymap.set({ 'n', 'v', 'x' }, '<Home>', '^')
 vim.keymap.set('i', '<Home>', '<C-o>^')
+
+-- Better page up/down
+vim.keymap.set('n', '<PageUp>', '<C-u>zz')
+vim.keymap.set('n', '<PageDown>', '<C-d>zz')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

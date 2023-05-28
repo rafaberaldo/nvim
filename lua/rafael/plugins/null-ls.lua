@@ -1,6 +1,6 @@
 return {
   {
-    -- Adds support for formatting, linting, and more.
+    -- Formatting, linting, etc.
     'jose-elias-alvarez/null-ls.nvim',
     config = function()
       local null_ls = require('null-ls')
