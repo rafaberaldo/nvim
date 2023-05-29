@@ -28,8 +28,8 @@ vim.keymap.set('n', '<leader>o', 'o<Esc>')
 -- Move lines
 vim.keymap.set('v', '<A-Up>', ":m '<-2<CR>gv=gv")
 vim.keymap.set('v', '<A-Down>', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', '<A-i>', ":m '<-2<CR>gv=gv")
-vim.keymap.set('v', '<A-k>', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv")
 
 -- Backspace to alternate last buffer
 vim.keymap.set('n', '<BS>', '<C-6>')
@@ -64,3 +64,15 @@ vim.keymap.set('n', '<leader>t', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('n', '<leader>q', vim.cmd.bd, { desc = 'Delete buffer' })
 vim.keymap.set('n', '<leader>bn', vim.cmd.bnext, { desc = 'Next buffer' })
 vim.keymap.set('n', '<leader>bN', vim.cmd.bprev, { desc = 'Previous buffer' })
+
+-- Find selected
+-- vim.keymap.set('v', '<leader>s', 'y/<C-r><C-w>')
+
+-- Resize splits
+vim.keymap.set('n', '<A-kMinus>', ':resize -2<CR>')
+vim.keymap.set('n', '<A-kPlus>', ':resize +2<CR>')
+vim.keymap.set('n', '<C-kMinus>', ':vertical resize -2<CR>')
+vim.keymap.set('n', '<C-kPlus>', ':vertical resize +2<CR>')
+
+-- Leave terminal
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')

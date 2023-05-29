@@ -36,6 +36,11 @@ return {
           -- Instead of true it can also be a list of languages
           additional_vim_regex_highlighting = false,
         },
+
+        -- Needed because treesitter highlight turns off autoindent for php files
+        indent = {
+          enable = true,
+        },
       })
     end,
   },

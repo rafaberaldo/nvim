@@ -11,7 +11,8 @@ vim.opt.tabstop = 4 -- number of spaces of the tab character
 vim.opt.softtabstop = 4 -- number of spaces a <Tab> jumps while editing
 vim.opt.shiftwidth = 4 -- size of an indent
 vim.opt.expandtab = true -- tabs to spaces
-vim.opt.smartindent = true -- autoindent new lines
+vim.opt.autoindent = true -- autoindent new lines
+vim.opt.smartindent = true -- smart auto indenting
 vim.opt.breakindent = true -- indent wrapped lines
 
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
