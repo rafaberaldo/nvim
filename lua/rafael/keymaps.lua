@@ -58,9 +58,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic message' })
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open diagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open diagnostic message' })
+vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, { desc = 'Previous diagnostic message' })
+vim.keymap.set('n', ']e', vim.diagnostic.goto_next, { desc = 'Next diagnostic message' })
 
 -- Buffers keymaps
 vim.keymap.set('n', '<leader>q', vim.cmd.bd, { desc = 'Delete buffer' })
