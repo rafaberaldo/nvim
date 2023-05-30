@@ -7,10 +7,17 @@ return {
     config = function()
       local builtin = require('telescope.builtin')
 
-      vim.keymap.set('n', '<C-p>', builtin.find_files, {})
-      vim.keymap.set('n', '<C-f>', builtin.live_grep, {})
-      vim.keymap.set('n', '<leader><BS>', builtin.buffers, {})
-      vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
+      vim.keymap.set('n', '<C-p>', function()
+        vim.fn.system('git rev-parse --is-inside-work-tree')
+        if vim.v.shell_error == 0 then
+          require('telescope.builtin').git_files()
+        else
+          require('telescope.builtin').find_files()
+        end
+      end)
+      vim.keymap.set('n', '<C-f>', builtin.live_grep)
+      vim.keymap.set('n', '<leader><BS>', builtin.buffers)
+      vim.keymap.set('n', '<leader>gb', builtin.git_branches)
     end,
   },
 }
