@@ -1,9 +1,7 @@
 return {
-  {
-    -- Indent lines
-    'lukas-reineke/indent-blankline.nvim',
-    opts = {
-      show_trailing_blankline_indent = false,
-    },
+  -- Indent lines
+  'lukas-reineke/indent-blankline.nvim',
+  opts = {
+    show_trailing_blankline_indent = false,
   },
 }

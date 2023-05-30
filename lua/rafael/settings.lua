@@ -1,8 +1,5 @@
 -- [[ Setting options ]]
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 vim.opt.nu = true -- line numbers
 vim.opt.rnu = true -- relative line numbers
 vim.opt.cursorline = true -- highlight current line
@@ -17,8 +14,8 @@ vim.opt.breakindent = true -- indent wrapped lines
 
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
 vim.opt.splitright = true -- force all vertical splits to go to the right of current window
-vim.opt.showtabline = 0 -- always show tabs
-vim.opt.cmdheight = 1 -- more space for displaying messages
+vim.opt.showtabline = 2 -- always show tabs
+vim.opt.cmdheight = 1 -- space for displaying messages
 vim.opt.wrap = false -- word wrap
 vim.opt.colorcolumn = '100' -- line length marker
 vim.opt.termguicolors = true -- enable 24-bit RGB colors
